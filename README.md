@@ -2,11 +2,16 @@
 
 The model should use an appropriate family distribution for the response variable, and consider between study heterogeneity
 
-$y_ij$: number of people who reuse towels (reuse) in study j and group i
-n_ij: total number of customers (total) in study j and group i
-x_ij in {0,1}: Group indicator (0=control, 1=social norm)
-β_0: Population-level baseline log-odds of towel reuse in the control group
-β_social: Overall population-level effect of the social norm intervention on the log-odds scale
+$y_{ij}$: number of people who reuse towels (reuse) in study j and group i
+
+$n_{ij}$: total number of customers (total) in study j and group i
+
+$x_{ij}$ in {0,1}: Group indicator (0=control, 1=social norm)
+
+$\beta_0$ : Population-level baseline log-odds of towel reuse in the control group
+
+$\beta_{\text{social}}$: Overall population-level effect of the social norm intervention on the log-odds scale
+
 u _0j ~ N(0,σ^2_0): Random intercept for study j, capture varying baseline reuse rates across hotels
 u _1j ~ N(0,σ^2_1): Random slope for study j, capture between-study heterogeneity in intervention efficacy
 
