@@ -85,7 +85,7 @@ print(summary_table)
 | study_sigma ($\sigma_0$) | 1.17 | 0.66 | 2.00 | 1.00 | 1902 |
 | group\|study_sigma[social] ($\sigma_1$) | 0.19 | 0.01 | 0.55 | 1.00 | 2215 |
 
-**Reliability Check:** All parameters exhibit an $\hat{R}$ value of `1.00` and robust bulk effective sample sizes ($\text{ESS} > 1900$), confirming that the MCMC chains successfully converged and mixed well.
+All parameters exhibit an $\hat{R}$ value of `1.00` and robust bulk effective sample sizes ($\text{ESS} > 1900$), confirming that the MCMC chains successfully converged and mixed well.
 
 ---
 
