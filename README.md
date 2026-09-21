@@ -12,13 +12,16 @@ $\beta_0$ : Population-level baseline log-odds of towel reuse in the control gro
 
 $\beta_{\text{social}}$: Overall population-level effect of the social norm intervention on the log-odds scale
 
-u _0j ~ N(0,σ^2_0): Random intercept for study j, capture varying baseline reuse rates across hotels
+$\mu_{0j} \sim \mathcal{N}(0,\sigma^2_0)}: Random intercept for study j, capture varying baseline reuse rates across hotels
+
 u _1j ~ N(0,σ^2_1): Random slope for study j, capture between-study heterogeneity in intervention efficacy
 
-we want to account for both the outcome structure and variations between individual studies
-thus we formulate a Hierarchical Binomial Logistic Model as follows
+we want to account for both the outcome structure and variations between individual studies thus we formulate a Hierarchical Binomial Logistic Model as follows
+
 y_ij ~ Binomial(n_ij, p_ij)
+
 logit(p_ij) = ln(p_ij/(1-p_ij)) = β_0 + β_social * x_ij + u_0j + u_1j * x_ij
 
 Specify Hierarchical Binomial Model 
+
 p(reuse, total) specifies proportion of successes out of total trials
