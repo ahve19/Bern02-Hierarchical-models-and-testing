@@ -1,8 +1,8 @@
-## Bern02-Hierarchical-models-and-testing
+# Bern02-Hierarchical-models-and-testing
 
 The purpose of this exercise is to use a collection of randomized case-control studies to determine the effectiveness of descriptive social norms on reuse of towels at hotels.
 
-# Model Formulation
+## Model Formulation
 
 Since we are considering multiple different studies we need both an appropriate family distribution for the response variable and to consider heterogeneity between studies. We want to account for both the outcome structure and variations between individual studies. Thus we formulate a Hierarchical Binomial Logistic Model, where $p(\text{reuse}, \text{total})$ specifies proportion of successes out of total trials, as follows:
 
@@ -38,7 +38,51 @@ model_hierarchical = bmb.Model(
 
 We account for the heterogeneity between hotels (from things like location, wording of message, guest demographic, etc) by using random effects (ie $\mu_{0j}$ and $\mu_{1j}$) to allow for adaption between aggregate data. A fixed-effects model would assume a single underlying true effect, underestimating standard errors.
 
-# Hypothesis Testing
+## Model Analysis
+We want to consider the parameter values of the posterior means and the 90% probability interval. We must first fit the model to get the posterior values. For reproducibility, a random seed of 42 was chosen.
+
+```
+results = model_hierarchical.fit(
+    draws=2000, 
+    tune=2000, 
+    target_accept=0.95,
+    return_inferencedata=True,
+    random_seed=42
+)
+```
+
+We then want to summarize the fit and consider a confidence level of 90%. 
+
+```
+summary_table = az.summary(results, ci_prob=0.90)
+columns_to_keep = ["mean", summary_table.columns[2], summary_table.columns[3], "r_hat", "ess_bulk"]
+print(summary_table[columns_to_keep])
+```
+This results in the following table
+
+| | mean | eti90_lb | eti90_ub | r_hat | ess_bulk |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+|Intercept                  |  0.42   |  -0.3     | 1.1  |1.00    | 2294|
+|group[social]              | 0.178   |-0.049     |0.37  |1.00    | 3870|
+| 1 study_sigma             |   1.17  |   0.66    |    2 | 1.00   |  1902|
+| group|study_sigma[social] |  0.188  |  0.013    | 0.55 | 1.00   |  2215|
+| 1, study[1]               |   -0.97  |   -1.7   | -0.23|  1.00   |  2348|
+| 1,study[2]                |   -0.9   |  -1.6    |-0.16 | 1.00    | 2345|
+|1,study[3]                 | -0.13    |-0.84     |0.61  |1.00     |2385|
+|1,study[4]                 | -0.64    | -1.4    |0.097 | 1.00     |2362|
+|1,study[5]                 |  1.15    |  0.3    |  2.1 | 1.00     |3299|
+|1,study[6]                 |  1.02    | 0.31    |  1.8 | 1.00     |2423|
+|1,study[7]                 |   0.9    | 0.12    |  1.8 | 1.00     |2577|
+|group,study[social, 1]     | 0.078    |-0.12    | 0.41 | 1.00    | 3974|
+|group,study[social, 2]     | 0.065    |-0.12    | 0.34 | 1.00    | 4045|
+|group,study[social, 3]     | 0.017    | -0.2    | 0.27 | 1.00    | 4930|
+|group,study[social, 4]     | 0.035    |-0.17    | 0.31 | 1.00    | 4271|
+|group,study[social, 5]     | 0.035    |-0.28    | 0.42 | 1.00     |7001|
+|group,study[social, 6]     |-0.071    |-0.38    | 0.15  |1.00     |5264|
+|group,study[social, 7]     |-0.145    |-0.68    | 0.11  |1.00     |3928|
+
+
+## Hypothesis Testing
 
 We want to test whether the social norm intervention increases towel reuse.
 
