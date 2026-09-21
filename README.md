@@ -14,14 +14,14 @@ $\beta_{\text{social}}$: Overall population-level effect of the social norm inte
 
 $\mu_{0j} \sim \mathcal{N}(0,\sigma^2_0)$: Random intercept for study j, capture varying baseline reuse rates across hotels
 
-u _1j ~ N(0,σ^2_1): Random slope for study j, capture between-study heterogeneity in intervention efficacy
+$\mu_{1j} \sim \mathcal{N}(0,\sigma^2_1)$: Random slope for study j, capture between-study heterogeneity in intervention efficacy
 
 we want to account for both the outcome structure and variations between individual studies thus we formulate a Hierarchical Binomial Logistic Model as follows
 
-y_ij ~ Binomial(n_ij, p_ij)
+$y_{ij} \sim \text{Binomial}(n_{ij}, p_{ij})$
 
-logit(p_ij) = ln(p_ij/(1-p_ij)) = β_0 + β_social * x_ij + u_0j + u_1j * x_ij
+$\text{logit}(p_{ij}) = \ln{\frac{p_{ij}}{1-p_{ij}}} = \beta_0 + \beta_{\text{social}} * x_{ij} + \mu_{0j} + \mu_{1j} * x_{ij}$
 
 Specify Hierarchical Binomial Model 
 
-p(reuse, total) specifies proportion of successes out of total trials
+$p(\text{reuse}, \text{total})$ specifies proportion of successes out of total trials
