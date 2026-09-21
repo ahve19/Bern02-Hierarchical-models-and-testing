@@ -12,7 +12,7 @@ $\beta_0$ : Population-level baseline log-odds of towel reuse in the control gro
 
 $\beta_{\text{social}}$: Overall population-level effect of the social norm intervention on the log-odds scale
 
-$\mu_{0j} \sim \mathcal{N}(0,\sigma^2_0)}: Random intercept for study j, capture varying baseline reuse rates across hotels
+$\mu_{0j} \sim \mathcal{N}(0,\sigma^2_0)}$: Random intercept for study j, capture varying baseline reuse rates across hotels
 
 u _1j ~ N(0,σ^2_1): Random slope for study j, capture between-study heterogeneity in intervention efficacy
 
