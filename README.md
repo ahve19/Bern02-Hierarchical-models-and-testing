@@ -34,7 +34,7 @@ Where the parameters and variables are defined as:
 
 ## 2. Estimation Method and Implementation
 
-The model is implemented in Python using **Bambi** (a high-level Bayesian model-building interface built on PyMC).
+The model is implemented in Python using **Bambi**.
 
 ### Model Definition and Fitting
 
