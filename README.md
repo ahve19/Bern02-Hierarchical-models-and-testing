@@ -115,8 +115,8 @@ print(f"Mean Odds Ratio: {mean_or:.4f}")
 
 ### Findings
 
-*   **Posterior Probability:** $P(\beta_{\text{social}} > 0 \mid \text{data}) \approx 0.9215$ (92.15%).
-*   **Expected Odds Ratio:** $\text{Mean OR} \approx 1.205$.
+*   **Posterior Probability:** $P(\beta_{\text{social}} > 0 \mid \text{data}) \approx 0.9235$ (92.35%).
+*   **Expected Odds Ratio:** $\text{Mean OR} \approx 1.2100$.
 
 ### Interpretation
 
